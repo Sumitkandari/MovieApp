@@ -5,6 +5,9 @@ import MovieComponent from './component/MovieComponent.js';
 import React,{useState} from 'react';
 import MovieInfoComponent from './component/MovieInfoComponent';
 import axios from 'axios';
+import search from './component/search.png';
+import logos from './component/pngegg.png'
+
 let API_KEY="c4ee317a";
 const Container =styled.div`
 display:flex;
@@ -70,6 +73,7 @@ justify-content:space-evenly;
 `;
 
 function App() {
+  
   const [searchQuery,setSearchQuery]=useState();
   const [timeoutId,setTimeoutId]=useState();
   const [movielist,setMovieList]=useState();
@@ -93,11 +97,11 @@ function App() {
     
     <Header >
     <Appname>
-    <MovieImage src="/pngegg.png"/>
+    <MovieImage src={logos}/>
     React Movie App
     </Appname>
     <Search>
-    <SearchIcon src="/search.png"/>
+    <SearchIcon src={search}/>
     <SearchInput   placeholder="Search Movie" value={searchQuery} onChange={onTextChange}/>
     
 
@@ -106,12 +110,15 @@ function App() {
     </Header>
     {
       selectedMovie&&<MovieInfoComponent selectedMovie={selectedMovie} onSelectedMovie={onSelectedMovie}/>
+      
     }
     <MovieListContainer>
     {
-      movielist?.length?movielist.map((movie,index)=><MovieComponent movie={movie} key={index} onSelectedMovie={onSelectedMovie}/>):<MovieImage src="/pngegg.png"/>
+      movielist?.length?movielist.map((movie,index)=><MovieComponent movie={movie} key={index} onSelectedMovie={onSelectedMovie}/>):<MovieImage src={logos}/>
+      
 
     }
+    
     
     
 
